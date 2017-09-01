@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-flask
+  labels:
+    name: hello 
+spec:
+  replicas: 1
+  selector:
+    app: hello
+    framework: flask
+  template:
+    metadata:
+      labels:
+        app: hello
+        framework: flask
+    spec:
+      containers:
+        - name: hello
+          image: hello-flask:1.2
+          ports:
+            - containerPort: 8080
